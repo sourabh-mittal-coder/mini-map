@@ -85,9 +85,9 @@ export default function MapView() {
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
 
-        {points?.features.map((pos) => (
+        {points?.features.map((pos, i) => (
           <Marker
-            key={pos.properties.name}
+            key={pos.properties.name || i}
             position={[
               pos.geometry.coordinates[1],
               pos.geometry.coordinates[0],
