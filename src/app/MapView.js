@@ -1,5 +1,5 @@
 "use client";
-
+import L from "leaflet";
 import "./utils/LeafletIcon";
 import { MapContainer, TileLayer, Marker, Popup, GeoJSON } from "react-leaflet";
 import { useEffect, useState } from "react";
@@ -73,6 +73,13 @@ export default function MapView() {
     });
   };
 
+  const customIcon = new L.Icon({
+    iconUrl: "/marker.png",
+    iconSize: [41, 41],
+    iconAnchor: [12, 41],
+    popupAnchor: [1, -34],
+  });
+
   return (
     <div className="w-full h-screen">
       <MapContainer
@@ -92,6 +99,7 @@ export default function MapView() {
               pos.geometry.coordinates[1],
               pos.geometry.coordinates[0],
             ]}
+            icon={customIcon}
           >
             <Popup>
               <div className="p-1 text-sm leading-tight">
